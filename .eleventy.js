@@ -1,4 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pathPrefix = 'httpoetics-11';
 
 module.exports = function(eleventyConfig) {
   // Add your Eleventy configuration here
@@ -21,20 +22,20 @@ module.exports = function(eleventyConfig) {
   }
 
 eleventyConfig.addFilter("prependPath", function(value) {
-  return `/httpoetics${value}`;
+  return `/${pathPrefix}${value}`;
 });
   
   // Return the configuration object
   return {
     url: "https://jordanne.ca",
-    pathprefix: "/httpoetics",
+    pathPrefix: pathPrefix,
     passthroughFileCopy: true,
     markdownTemplateEngine: "njk", // use Nunjucks for Markdown files
     htmlTemplateEngine: "njk", // use Nunjucks for HTML files
     templateFormats: ["md", "njk", "html"], // use Nunjucks for .md, .njk, and .html files
     dir: {
       input: "src",
-      output: "../httpoetics"
+      output: "public"
     }
   };
 };
